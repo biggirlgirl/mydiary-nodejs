@@ -1,0 +1,11 @@
+<% include header %>
+<div class="panel-title">
+    <h2 class="text-center text-info form-group"><%= title %></h2>
+</div>
+<%if(success){%>
+<div class="text-center"><%= success%></div>
+<% }%>
+<%if(error){%>
+<div class="text-center"><%= error%></div>
+<% }%>
+<% include footer %>

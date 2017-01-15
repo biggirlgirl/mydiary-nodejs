@@ -1,0 +1,36 @@
+<% include header %>
+<div class="panel-title">
+    <h2 class="text-center text-info form-group"><%= title %></h2>
+</div>
+<%if(success){%>
+<div class="text-center"><%= success%></div>
+<% }%>
+<%if(error){%>
+<div class="text-center"><%= error%></div>
+<% }%>
+<form action="/post" method="post" class="col-sm-8 col-sm-offset-2">
+  <div class="row form-group">
+    <label class="col-sm-3  control-label">文章标题：</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" name="title" placeholder="title">
+    </div>
+  </div>
+  <div class="row form-group">
+    <label class="col-sm-3   control-label">文章标签：</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" name="tag" placeholder="tag">
+    </div>
+  </div>
+  <div class="row form-group">
+    <label class="col-sm-3  control-label">文章内容：</label>
+    <div class="col-sm-8">
+      <textarea  class="form-control" rows="20" name="content" placeholder="content"></textarea>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-sm-offset-3 col-sm-10">
+      <input type="submit" class="btn btn-success" value="提交">
+    </div>
+  </div>
+</form>
+<% include footer %>

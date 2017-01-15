@@ -1,0 +1,39 @@
+
+<% include header %>
+<div class="panel-title text-center">
+    <!--<h2 class="text-center text-info form-group">弹首曲吧，我的小天使</h2>-->
+    <button type="button" class="btn btn-default btn-lg" id="music" onclick="(oid.style.display=='none')?oid.style.display='':oid.style.display='none'">弹首曲吧,我的小天使,心里没谱？？？点这里哇！</button>
+    <p  id=oid style="display:none" class="text-center">
+       <span>两只老虎：1231 1231 345 345 565431 565431 312 312</span><br>
+        <span>小星星：1155665 4433221 5544332 5544332 1155665 4433221</span>
+    </p>
+</div>
+<%if(success){%>
+<div class="text-center"><%= success%></div>
+<% }%>
+<%if(error){%>
+<div class="text-center"><%= error%></div>
+<% }%>
+<!--音乐乐园-->
+<% include music%>
+<!--文章部分-->
+<ul class="list-group index" >
+    <% if(posts) {%>
+    <% posts.forEach(function(post,index){%>
+    <li  class="list-group-item">
+        <h3 class="list-group-item-heading">
+            <img src="/img/<%= post.pictureurl%>" alt="个人头像" id="picture" onerror="this.src='/img/toux.jpg'">
+            <a href="/u/<%= post.name%>/<%= post.time%>/<%= post.title%>" id="title"><%= post.title %></a>
+            <a href="/u/<%= post.name%>" class="author"><%= post.name %></a>
+        </h3>
+        <div class="list-group-item-text"><%= post.post %></div>
+        <span class="list-group-item-text">评论:<%= post.comments.length%>阅读:<%= post.pv%>时间:<%= post.time %></span>
+    </li>
+    <%})%>
+    <% } %>
+</ul>
+<!--返回顶部动画特效-->
+<% include toup%>
+<!--分页模板-->
+<% include paging%>
+<% include footer %>

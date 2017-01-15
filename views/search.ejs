@@ -1,0 +1,21 @@
+<% include header %>
+<script>1111</script>
+<div class="panel-title">
+    <h2 class="text-center text-info form-group"><%= title %></h2>
+</div>
+<%if(success){%>
+<div class="text-center"><%= success%></div>
+<% }%>
+<%if(error){%>
+<div class="text-center"><%= error%></div>
+<% }%>
+<ul class="list-group">
+  <% post.forEach(function (post,index) {%>
+  <li  class="list-group-item">
+    <strong class="tag"><a href="/u/<%= post.name%>/<%= post.time%>/<%= post.title%>" class="text-left"><%= post.title %></a></strong>
+    <a href="/u/<%= post.name%>" id="author" class="text-left">作者：<%= post.name %></a>
+    <span id="time"><%= post.time %></span>
+  </li>
+  <%})%>
+</ul>
+<% include footer %>

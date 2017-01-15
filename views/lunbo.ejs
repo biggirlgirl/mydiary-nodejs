@@ -1,0 +1,77 @@
+<div class="content">
+    <div class="pic">
+        <!--(a[href=#]>img[src=img/$@1.jpg])*5-->
+        <a class="current" href="#"><img src="/img/bg6.jpg" alt="" /></a>
+        <a href="#"><img src="/img/bg14.jpg" alt="" /></a>
+        <a href="#"><img src="/img/bg4.jpg" alt="" /></a>
+        <a href="#"><img src="/img/bg7.jpg" alt="" /></a>
+        <a href="#"><img src="/img/bg8.jpg" alt="" /></a>
+    </div>
+    <div class="indicator">
+        <span class="active">1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+    </div>
+    <div class="page">
+        <span class="prev">&lt;</span>
+        <span class="next">&gt;</span>
+    </div>
+</div>
+<script>
+    $(function () {
+
+        // 记录图片的索引，初始是第一张
+        var index = 0;
+
+        // 自动播放图片
+        var timer = setInterval(nextImg,1000);
+
+        // 下一张图
+        function nextImg () {
+            index = index==$('.content .pic a').length-1 ? 0 : index+1;
+            showImg();
+        }
+        // 上一张图
+        function prevImg () {
+            index = index==0 ? $('.content .pic a').length-1 : index-1;
+            showImg();
+        }
+
+        function showImg () {
+            $('.content .pic a')
+                    .eq(index).show()
+                    .siblings().hide();
+            $('.content .indicator span')
+                    .eq(index).addClass('active')
+                    .siblings().removeClass('active');
+        }
+
+        // 手动切换
+        $('.content .indicator span').hover(function () {
+            clearInterval(timer);
+
+            index = $(this).index();
+            showImg();
+        },function () {
+            timer = setInterval(nextImg,1000);
+        });
+
+        // 点击切换上一张/下一张
+        $('.content .page span').hover(function () {
+            clearInterval(timer);
+        },function () {
+            timer = setInterval(nextImg,1000);
+        });
+        // 上一张
+        $('.content .page .prev').click(function () {
+            prevImg();
+        });
+        // 下一张
+        $('.content .page .next').click(function () {
+            nextImg();
+        });
+
+    });
+</script>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" content="wide=device-width,intial-scale=1,user-scalable=no">
+    <title>mydiary</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/dist/css/bootstrap.css">
+    <script src="/js/jquery-3.1.1.js"></script>
+    <script src="/dist/js/bootstrap.js"></script>
+</head>
+<style>
+    body{
+        overflow: hidden;
+    }
+</style>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navlist">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navlist">
+            <ul class="nav navbar-nav navbar-left header">
+                <li><a href="/" class="leftp">首页</a></li>
+                <li><a href="/tags" >标签</a></li>
+            </ul>
+            <% if(user){ %>
+            <ul class="nav navbar-nav  navbar-left">
+                <li><a  href="/u/<%= user.name%>" class="leftp">我的主页</a></li>
+                <li><a href="/post" >发布</a></li>
+                <li><a href="/codingalways">进化史</a></li>
+            </ul>
+            <ul class="nav navbar-nav  navbar-right">
+                <li><a href="/personal" ><%= user.name%></a></li>
+                <li><a href="/logout" >退出</a></li>
+            </ul>
+            <% }else{ %>
+            <ul class="nav navbar-nav  navbar-right header">
+                <li><a href="/login">登录</a></li>
+                <li><a href="/regist" class="rightp" >注册</a></li>
+            </ul>
+            <%}%>
+            <form class="navbar-form navbar-left" role="search" action="/search" method="get">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search" name="keyword">
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="container text-center">
+
+
+<%- include footer%>
+<script src="/js/snow.js"></script>

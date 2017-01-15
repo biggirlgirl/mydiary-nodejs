@@ -1,0 +1,58 @@
+
+<%if(user){%>
+<form  method="post" action="/comment/<%= post.name%>/<%= post.time%>/<%= post.title%>">
+    发布者：<img src="/img/<%= user.pictureurl%>" alt="个人头像" id="picture" onerror="this.src='/img/toux.jpg'"><%= user.name%><br>
+    <input type="hidden" name="name" value="<%= user.name %>">
+    <textarea class="form-control" name="content"  rows="3"></textarea>
+    <input type="submit" class="btn btn-success btn-group-xs" value="留言">
+</form>
+<%} else {%>
+回复请先 <a href="/login">登录</a>或 <a href="/regist">注册</a><br>
+<textarea name="content" class="form-control"  rows="3" id="textarea"></textarea>
+<input type="submit" value="留言" class="btn btn-success btn-group-xs" id="btn">
+<%}%>
+
+
+<%if(post.comments.length>0){%>
+<div class="panel panel-default panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title">评论回复区</h3>
+    </div>
+    <div class="table panel-body">
+    <% post.comments.forEach(function (comment) {%>
+        <p><%= comment.content%></p>
+        <p><img src="/img/<%= post.pictureurl%>" alt="个人头像" id="picture" onerror="this.src='/img/toux.jpg'"><%= comment.name%></a>回复于：<%= comment.time%></p>
+    <%})%>
+    </div>
+</div>
+<%}else{%>
+<div class="panel panel-default panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title">评论回复区</h3>
+    </div>
+    <div class="table panel-body">
+        空空如也，发表宝贵的第一条评论吧。小主，留下你的大脚丫子~
+    </div>
+</div>
+  <%}%>
+
+
+
+
+<script>
+    window.onload=function () {
+        var button=document.querySelector('#btn');
+        btn.onclick=function (e) {
+            e.preventDefault();
+            location.href='/login';
+        }
+        var textarea=document.querySelector('#textarea');
+        textarea.onfocus=function () {
+            location.href='/login';
+        }
+    }
+</script>
+
+
+
+

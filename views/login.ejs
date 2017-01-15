@@ -1,0 +1,75 @@
+<% include header %>
+<script src="js/jquery.validate.js"></script>
+<div class="regist col-sm-8 col-sm-offset-2">
+<div class="panel-title">
+    <h2 class="text-center text-info form-group" id="logintitle"><%= title %></h2>
+</div>
+<%if(success){%>
+<div class="text-center"><%= success%></div>
+<% }%>
+<%if(error){%>
+<div class="text-center"><%= error%></div>
+<% }%>
+<form class="form-horizontal col-xs-offset-2" role="form" method="post" action="/login" id="form">
+    <fieldset>
+  <div class="form-group">
+    <div class="col-sm-6 col-sm-offset-2">
+      <input type="text" class="form-control" name="username" placeholder="username">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-6 col-sm-offset-2">
+      <input type="password" class="form-control" name="password" placeholder="Password">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-6 col-sm-offset-2">
+      <input type="submit" class="form-control submit" value="点我登录">
+    </div>
+  </div>
+    </fieldset>
+</form>
+</div>
+<% include footer %>
+<script>
+    $("#form").validate({
+        rules:{
+            username:{
+                required: true,
+                minlength: 4,
+                maxlength: 4,
+                unameMethod:true,
+            },
+            password:{
+                required: true,
+                minlength: 6,
+                maxlength: 16,
+                passwordMethod:true,
+
+            },
+            message:{
+                username:{
+                    required: "用户名不能为空",
+                    minlength: "用户名的最小长度为2"
+                },
+                password:{
+                    required: "密码不能为空",
+                    minlength: "密码长度不能少于6个字符",
+                    maxlength: "密码长度不能超过16个字符"
+                },
+            }
+        }
+    });
+    $.validator.addMethod(
+            "unameMethod",
+            function(value, element){
+                return  this.optional(element) || /[a-zA-Z]{4}/.test(value);
+            },"账号格式不正确"
+    );
+    $.validator.addMethod(
+            "passwordMethod",
+            function(value, element){
+                return  this.optional(element) || /^[a-zA-Z]\w{5,15}$/.test(value);
+            },"密码格式不正确"
+    );
+</script>

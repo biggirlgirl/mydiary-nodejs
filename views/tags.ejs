@@ -1,0 +1,17 @@
+<% include header%>
+<% include musicload %>
+<div class="panel-title">
+    <h2 class="text-center text-info form-group"><%= title %></h2>
+</div>
+<%if(success){%>
+<div class="text-center"><%= success%></div>
+<% }%>
+<%if(error){%>
+<div class="text-center"><%= error%></div>
+<% }%>
+<div class="list-group  col-sm-12">
+  <% posts.forEach(function (tag,index) {%>
+  <a href="/tags/<%= tag %>" class="list-group-item list-group-item-info"><%= tag %></a>
+  <% })%>
+</div>
+<% include footer%>

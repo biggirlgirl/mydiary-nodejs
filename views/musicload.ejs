@@ -1,0 +1,173 @@
+<div class="musicload col-sm-12 text-center">
+<audio></audio>
+<input type="button" class="btn-info" value="播放" onclick="play()"/>
+<input type="button" class="btn-info" value="暂停" onclick="pause()"/>
+<input type="button" class="btn-info" value="上一首" onclick="prev()"/>
+<input type="button" class="btn-info" value="下一首" onclick="next()"/>
+<input type="button" class="btn-info" value="音量+" onclick="volumeUp()"/>
+<input type="button" class="btn-info" value="音量-" onclick="volumeDown()"/>
+<h4></h4> <!--显示音量大小-->
+<p></p> <!--显示播放/暂停-->
+<h1></h1>  <!--显示歌曲名-歌手名-->
+<h3></h3> <!--显示播放时间/总时间-->
+<img src="img/bg12.jpg"> <!--显示人物封面-->
+</div>
+<script type="text/javascript">
+
+    // 可以把每一首歌看成一个对象：
+    // 这个对象就可以包含：歌曲名、歌手名、人物封面图片等
+    // 歌曲的列表
+    var list = [{
+        name:'安和桥',
+        src:'/musicload/安和桥.mp3',
+        singer:'宋冬野',
+        cover:'/img/bg13.jpg'
+    },{
+        name:'不说再见',
+        src:'/musicload/不说再见.mp3',
+        singer:'好妹妹乐团',
+        cover:'/img/bg11.jpg'
+    },{
+        name:'原谅',
+        src:'/musicload/原谅.mp3',
+        singer:'大概是个女的唱的',
+        cover:'/img/bg9.jpg'
+    },{
+        name:'理想三旬',
+        src:'/musicload/理想三旬.mp3',
+        singer:'陈鸿宇',
+        cover:'/img/bg6.jpg'
+    },{
+        name:'水边的阿迪丽娜',
+        src:'/musicload/水边的阿迪丽娜.mp3',
+        singer:'纯音乐',
+        cover:'/img/bg5.jpg'
+    }];
+
+    var audio = document.getElementsByTagName('audio')[0];
+    var h4 = document.querySelector('h4');
+    var p = document.querySelector('p');
+    var h1 = document.querySelector('h1');
+    var h3 = document.querySelector('h3');
+    var img = document.querySelector('img');
+    // 表示第几首歌
+    var current = 0;
+
+    // 设置播放的声音大小 取值[0.0 - 1.0]
+    audio.volume = 0.5;
+
+    // 播放
+    function play () {
+        // 找到一首歌
+        var song = list[current];
+        // console.dir(song);
+        // 比如：传奇-王菲
+        h1.innerHTML = song.name + '-' + song.singer;
+        // 加载封面图片
+        img.src = song.cover;
+        // 加载音频
+        audio.src = song.src;
+
+        // 播放音频
+        audio.play();
+    }
+
+    // 暂停
+    function pause () {
+        // 暂停
+        // audio.pause();
+
+        // 判断当前是否暂停
+        // audio.paused 当时暂停时返回true，当时播放时返回false
+        if (audio.paused) {
+            audio.play();
+        } else{
+            audio.pause();
+        }
+    }
+
+    // 上一首
+    function prev () {
+        if (current > 0) {
+            current --;
+        } else{
+            current = list.length - 1;
+        }
+
+        play();
+    }
+    // 下一首
+    function next () {
+        if (current <　list.length-1) {
+            current ++;
+        } else{
+            current = 0;
+        }
+        console.log('next='+current);
+        // 重新加载资源
+        play();
+    }
+
+    // 音量加
+    function volumeUp () {
+        if (audio.volume <　1) {
+            audio.volume += 0.1;
+        }
+    }
+    // 音量减
+    function volumeDown () {
+        if (audio.volume > 0) {
+            audio.volume -= 0.1;
+        }
+    }
+    // 监听音量变化
+    // onvolumechange 当音量发生变化时触发
+    audio.onvolumechange = function () {
+        h4.innerHTML = '音量:'+audio.volume.toFixed(2);
+    }
+    // 监听是否正在播放
+    audio.onplaying = function () {
+        p.innerHTML = '正在播放';
+    }
+    // 监听是否暂停
+    audio.onpause = function () {
+        p.innerHTML = '已经暂停';
+    }
+    // 监听播放时间的变化
+    audio.ontimeupdate = function () {
+        // 当前播放时间
+        var currentTime = audio.currentTime;
+        // 总的播放时间
+        var times = audio.duration;
+        // console.log('curr='+currentTime+'  times='+times);
+
+        // 分:秒/分:秒
+        // format(currentTime);
+
+        h3.innerHTML = format(currentTime) + '/'
+                + format(times);
+
+    }
+    // 格式化时间  分：秒
+    function format (second) {
+        // 把数字转化成整数
+        var time = parseInt(second);
+        // console.log(time);
+        // 秒数      132 72 12
+        var s = time % 60;
+        // 分钟数 50 110 170 230
+        var m = parseInt(time/60);
+
+        //00:01  00:50 01:50
+
+        s = s<10 ? '0'+s : s;
+        m = m<10 ? '0'+m : m;
+
+        return m + ":" + s
+    }
+
+    var a = 0;
+    for (var i = 0; i <= 49; i ++) {
+        a += 2*i + 1;
+    }
+</script>

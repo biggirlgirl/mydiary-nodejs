@@ -1,0 +1,29 @@
+<script src="js/pagination.js"></script>
+<div class="text-center">
+    <!--<ul class="pagination">-->
+        <!--<%if(posts.length>0){%>-->
+        <!--<li><a href="?p=1">首页</a></li>-->
+        <!--<% for(var i=0;i<total;i++) { %>-->
+        <!--<li><a href="?p=<%= i+1%>"><%= i+1%></a></li>-->
+        <!--<% } %>-->
+        <!--<li><a title="下一页" href="?p=<%= total%>">尾页</a></li>-->
+        <!--<%}%>-->
+    <!--</ul>-->
+    <ul class="pagination" id="Pagination" >
+    <%if(posts.length>0){%>
+        <li><a href="?p=1">首页</a></li>
+    <% for(var i=0;i<totalall;i++) { %>
+    <li><a href="?p=<%= i+1%>"><%= i+1%></a></li>
+    <% } %>
+        <li><a title="下一页" href="?p=<%= totalall%>">尾页</a></li>
+    <%}%>
+    </ul>
+
+</div>
+<script>
+    var total=total;
+    $("#Pagination").pagination(total, {
+        items_per_page:5,
+
+    });
+</script>

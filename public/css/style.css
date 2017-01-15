@@ -1,0 +1,327 @@
+html{
+    font-size: 100px;
+}
+li.list-group-item>h3.list-group-item-heading>a:hover{
+    text-decoration: none;
+    color:palevioletred;
+}
+li.list-group-item>a:hover,li.list-group-item>strong>a:hover{
+    text-decoration: none;
+    color: darkred;
+}
+nav.navbar{
+    /*background-color: darkgray;*/
+}
+body{
+    background-image: url(/img/bg15.jpg);
+    background-size: 100%  100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    /*overflow: hidden;*/
+}
+div #navlist>ul>li>a{
+    padding-left: 15px;
+}
+div #navlist>ul>li>a:hover{
+    /*background-color: gray;*/
+    color:lightskyblue;
+    opacity: 0.6;
+}
+div.container>div.panel-title{
+    margin: 7rem auto 3rem auto;
+}
+ul.header>li>a.leftp{
+    padding-left: 0;
+}
+ul.header>li>a.rightp{
+    padding-left: 0;
+}
+ul.index>li.list-group-item{
+    height: 15rem;
+    overflow: hidden;
+}
+ul.index>li.list-group-item>div.list-group-item-text{
+    font-size:1.8rem;
+    height: 7rem;
+    line-height:2.3rem;
+    overflow: hidden;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    margin-bottom: 1rem;
+}
+a.author{
+    font-size: 15px;
+    color: grey;
+}
+span a{
+    text-decoration:none;
+    font-size: 20px;
+    color: whitesmoke;
+    padding-left: 20px;
+}
+span a:nth-child(1){
+    font-size: 30px;
+    padding-left: 0;
+}
+footer div.container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+ul.list-group>li.list-group-item>span.time{
+   /*float: right;*/
+    padding-right: 80px;
+
+}
+input.btn{
+    margin:1rem 0;
+}
+div.container>div.text-center{
+    font-size:2rem;
+    color: grey;
+}
+ul.list-group>li.list-group-item>strong.tag{
+    /*display: inline-block;*/
+    /*width: 10rem;*/
+    font-size: 2rem;
+}
+ul.list-group>li.list-group-item>p.list-group-item-text{
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    line-height: 2.5rem;
+}
+ul.list-group>li.list-group-item>h3.list-group-item-heading>a.title{
+    margin: 3rem auto;
+}
+ul.list-group>li.list-group-item>h3.list-group-item-heading>span{
+    font-size: 1.4rem;
+    color: grey;
+}
+.index li{
+    /*background-color:lightgoldenrodyellow;*/
+    opacity: 0.7;
+}
+footer{
+    margin-top: 8rem;
+    margin-bottom: 20px;
+    /*background-image: url(/img/footerbg.jpg);*/
+    /*background-size: 100%  100%;*/
+    /*width: 100%;*/
+    /*height: 100px;*/
+
+}
+div.container>div.regist{
+    margin-top: 200px;
+    background-color:darkgray;
+    /*background-image: url(/img/bg4.jpg);*/
+    background-size: 100%  100%;
+    background-repeat: no-repeat;
+    /*border: 1px solid black;*/
+    padding: 25px;
+    opacity: 0.5;
+}
+div.container>div.regist>div.panel-title{
+    text-align: center;
+}
+div.container>div.regist>div.panel-title>h2.text-center{
+    display: inline-block;
+   position: relative;
+    font-size: 35px;
+}
+form>div.form-group>div>input{
+   border-radius: 10px;
+    height: 45px;
+    border:1px solid gray;
+}
+form>div.form-group>div>input.submit{
+    background-color: black;
+    font-size: 20px;
+    color: #5bc0de;
+}
+div.container>div.regist>div.panel-title>h2.text-center{
+    font-size: 25px;
+    color:black;
+}
+footer>div.container>div>span,footer>div.container>div>a{
+    color: gray;
+}
+form>div.form-group>#choseimg>input{
+    display: none;
+}
+form>div.form-group>#choseimg>img{
+    width: 100px;
+    height: 100px;
+}
+#picture{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1.5rem;
+}
+
+/*music部分的样式*/
+main.music{
+    width: 800px;
+    height: 400px;
+    border: 18px solid #666;
+    border-top: 40px solid #666;
+    box-sizing: border-box;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #fff;
+    background-image: url(/img/keys.png);
+    background-size: 100% 100%;
+    display: flex;
+    z-index: 3;
+    margin: 3rem auto;
+}
+main.music>div{
+    flex-grow: 1;
+    height: 100%;
+}
+div.music:active,
+.down{
+    /*r:red,g:green,b:blue,取值：0-255、
+     *  a:alpha 透明度， 取值0-1*/
+    background: linear-gradient(rgba(255,255,255,0),rgba(150,150,150,0.5));
+}
+div.text-center>p{
+    margin-top: 3rem;
+}
+@media (max-width: 992px){
+    #music{
+        display: none;
+    }
+    main.music{
+        display: none;
+    }
+}
+form>textarea.form-control{
+    margin-top: 20px;
+}
+
+/*返回顶部特效*/
+ul,li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.scroll{
+    width: 15px;
+    position: fixed;
+    top: 40%;
+    right: 0;
+    z-index: 8;
+}
+.scroll li{
+    height: 40px;
+    position: relative;
+}
+.scroll .top{
+    background: url(/img/scroll.png) no-repeat;
+}
+.scroll .bottom{
+    background: url(/img/scroll.png) no-repeat 0 -80px;
+}
+.scroll div{
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+}
+.scroll div a{
+    text-decoration: none;
+    display: block;
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: white;
+    border-radius: 20px 0 0 20px;
+}
+.scroll .to_top{
+    background-color: #d34;
+}
+.scroll .to_bottom{
+    background-color: #333;
+}
+/*轮播图的样式*/
+.content{
+    width: 93rem;
+    height: 45rem;
+    margin: 3rem auto;
+    position: relative;
+}
+.content .pic a{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+.content .pic a img{
+    width: 93rem;
+    height: 45rem;
+}
+.content .pic a.current{
+    display: block;
+}
+.content .indicator{
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}
+.content .indicator span{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.content .indicator span.active{
+    background-color: red;
+    border: 1px solid blue;
+}
+.content .page{
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    color: white;
+}
+.content .page span{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(100,100,100,0.6);
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    /*禁止用户选择页面上的内容*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+.content .page span:hover{
+    background-color: rgba(100,100,100,0.8);
+}
+/*音乐播放器加载*/
+div.musicload{
+    margin-top: 10rem;
+    margin-bottom: 3rem;
+}
+div.text-center>img{
+    width:93rem;
+    height:45rem;
+}
+@media (max-width: 1200px) {
+    .musicload>img{
+      display: none;
+    }
+    div.content{
+        display: none;
+    }
+}
+
+#form label.error {
+    color: red;
+}

@@ -1,0 +1,33 @@
+
+<%- include header%>
+<div class="panel-title">
+    <h2 class="text-center text-info form-group"><%= title %></h2>
+</div>
+<%if(success){%>
+<div class="text-center"><%= success%></div>
+<% }%>
+<%if(error){%>
+<div class="text-center"><%= error%></div>
+<% }%>
+<ul class="list-group">
+    <li  class="list-group-item">
+        <h3 class="list-group-item-heading">
+            <a href="/u/<%= post.name%>/<%= post.time%>/<%= post.title%>" class="title"><%= post.title %></a>
+            <a href="/u/<%= post.name%>" class="author">作者:<%= post.name %></a><br>
+            <a href="/tags/<%= post.tag%>" class="author">标签:<mark><%= post.tag%></mark></a><span>时间:<%= post.time%></span>
+        </h3>
+        <p class="list-group-item-text"><%= post.post %></p>
+        <% if(user && (user.name==post.name)){%>
+        <p>
+            <a class="btn-sm btn-success" href="/edit/<%= post.name%>/<%= post.time%>/<%= post.title%>">编辑</a>
+            <a class="btn-sm btn-danger" href="/remove/<%= post.name%>/<%= post.time %>/<%= post.title%>">删除</a>
+        </p>
+        <%}%>
+    </li>
+</ul>
+<!--评论模块-->
+<% include comment%>
+<%- include footer%>
+
+
+
